@@ -2,11 +2,11 @@
 import 'bootstrap';
 
 // import apiKeys from '../db/apiKeys.json';
-
+import displayNavbar from './components/Navbar/navbar';
 import './index.scss';
 
 const initApp = () => {
-  console.log('yo');
+  displayNavbar();
 };
 
 initApp();
