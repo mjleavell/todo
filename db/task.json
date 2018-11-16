@@ -1,0 +1,64 @@
+{
+  "tasks": {
+    "task1": {
+      "task": "Brush your teeth",
+      "isCompleted": "false"
+    },
+    "task2": {
+      "task": "Workout",
+      "isCompleted": "false"
+    },
+    "task3": {
+      "task": "Eat lunch",
+      "isCompleted": "true"
+    },
+    "task4": {
+      "task": "Sleep",
+      "isCompleted": "false"
+    },
+    "task5": {
+      "task": "Go to work",
+      "isCompleted": "false"
+    },
+    "task6": {
+      "task": "Brush your hair",
+      "isCompleted": "true"
+    },
+    "task7": {
+      "task": "Go to the grocery",
+      "isCompleted": "false"
+    },
+    "task8": {
+      "task": "Watch Netflix",
+      "isCompleted": "true"
+    },
+    "task9": {
+      "task": "Check your email",
+      "isCompleted": "true"
+    },
+    "task10": {
+      "task": "Take a shower",
+      "isCompleted": "true"
+    },
+    "task11": {
+      "task": "Get a manicure",
+      "isCompleted": "true"
+    },
+    "task12": {
+      "task": "Respond to emails",
+      "isCompleted": "true"
+    },
+    "task13": {
+      "task": "Walk the dog",
+      "isCompleted": "true"
+    },
+    "task14": {
+      "task": "Feed the dog",
+      "isCompleted": "true"
+    },
+    "task15": {
+      "task": "Go to the dentist",
+      "isCompleted": "false"
+    }
+  }
+}
