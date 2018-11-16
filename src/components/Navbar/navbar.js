@@ -1,4 +1,22 @@
 import $ from 'jquery';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
+const navbarEvents = () => {
+  $('.nav-link').on('click', (e) => {
+    if (e.target.id === 'navbar-btn-logout') {
+      firebase.auth().signOut().then(() => {
+        $('#login').show();
+        $('#task').hide();
+      }).catch((err) => {
+        console.error(err);
+      });
+    } else if (e.target.id === 'navbar-btn-task') {
+      $('#login').hide();
+      $('#task').show();
+    }
+  });
+};
 
 const displayNavbar = () => {
   const domString = `
@@ -10,10 +28,7 @@ const displayNavbar = () => {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" id="navbar-btn-auth">authentication</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="navbar-btn-logout">new task</a>
+          <a class="nav-link" id="navbar-btn-task">new task</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" id="navbar-btn-logout">logout</a>
@@ -22,6 +37,7 @@ const displayNavbar = () => {
     </div>
   </nav>`;
   $('#navbar').html(domString);
+  navbarEvents();
 };
 
 export default displayNavbar;
