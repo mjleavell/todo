@@ -6,14 +6,14 @@ import displayNavbar from './components/Navbar/navbar';
 import './index.scss';
 import loginBtn from './components/Auth/auth';
 import getUserLoginStatus from './helpers/navbarHelpers';
-import displayTasks from './data/tasks';
+import getTasks from './components/TasksPage/tasks';
 
 const initApp = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
   displayNavbar();
   getUserLoginStatus();
   loginBtn();
-  displayTasks();
+  getTasks();
 };
 
 initApp();

@@ -1,0 +1,15 @@
+#task {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.card {
+  width: 12rem;
+  margin: 10px;
+  padding: 5px;
+  .btn {
+    width: 8rem;
+    margin: 5px;
+  }
+}
