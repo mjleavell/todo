@@ -1,9 +1,9 @@
 import axios from 'axios';
-import apiKeys from '../../db/apiKeys.json';
+import apiKeys from '../../../db/apiKeys.json';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
-const getTasksData = () => new Promise((resolve, reject) => {
+const getAllTasks = () => new Promise((resolve, reject) => {
   axios
     .get(`${baseUrl}/tasks.json`)
     .then((result) => {
@@ -23,4 +23,4 @@ const getTasksData = () => new Promise((resolve, reject) => {
     });
 });
 
-export default getTasksData;
+export default { getAllTasks };
