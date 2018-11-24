@@ -6,10 +6,12 @@ const printTasks = (tasks) => {
   let taskString = '';
   tasks.forEach((task) => {
     taskString += `
-    <div class="card">
+    <div class="card  border-dark">
       <h5 class="card-title">${task.task}</h5>
-      <button class="btn btn-danger delete-btn" data-delete-id=${task.id}>Delete friend</button>
-      <button class="btn btn-secondary edit-btn" data-edit-id=${task.id}>Edit friend</button>
+      <div class="card-body">
+        <button class="btn btn-secondary task-btn" data-edit-id=${task.id}><i class="far fa-edit"></i></button>
+        <button class="btn btn-danger task-btn" data-delete-id=${task.id}><i class="fas fa-trash-alt"></i></button>
+      </div>
     </div>`;
   });
   $('#task').html(taskString);

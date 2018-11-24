@@ -5,11 +5,18 @@
 }
 
 .card {
-  width: 12rem;
-  margin: 10px;
+  width: 11em;
+  margin: 20px 10px 10px 10px;
   padding: 5px;
   .btn {
-    width: 8rem;
+    width: 2.5rem;
     margin: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
+}
+
+.card-body {
+  padding: 0px;
+  display: inline-block;
 }
