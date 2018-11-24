@@ -23,4 +23,9 @@ const getAllTasks = () => new Promise((resolve, reject) => {
     });
 });
 
-export default { getAllTasks };
+const updateTask = (taskObject, taskId) => axios.put(`${baseUrl}/tasks/${taskId}.json`, JSON.stringify(taskObject));
+
+export default {
+  getAllTasks,
+  updateTask,
+};
