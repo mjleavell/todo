@@ -32,7 +32,7 @@ const deleteTask = (e) => {
   taskData.deleteTask(idToDelete)
     .then(() => {
       getTasks();
-      console.log(getTasks);
+      // console.log(getTasks);
     })
     .catch((error) => {
       console.error('error on deleteTask', error);
