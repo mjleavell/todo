@@ -23,12 +23,28 @@ const getAllTasks = () => new Promise((resolve, reject) => {
     });
 });
 
+const getSingleTask = taskId => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/tasks/${taskId}.json`)
+    .then((result) => {
+      const singleTask = result.data;
+      singleTask.id = taskId;
+      resolve(singleTask);
+    })
+    .catch((err) => {
+      reject(err);
+    });
+});
+
+const updateTask = (taskObject, taskId) => axios.put(`${baseUrl}/tasks/${taskId}.json`, JSON.stringify(taskObject));
+
 const deleteTask = taskId => axios.delete(`${baseUrl}/tasks/${taskId}.json`);
 
 const addNewTask = taskObject => axios.post(`${baseUrl}/tasks.json`, JSON.stringify(taskObject));
 
 export default {
   getAllTasks,
+  getSingleTask,
+  updateTask,
   deleteTask,
   addNewTask,
 };
