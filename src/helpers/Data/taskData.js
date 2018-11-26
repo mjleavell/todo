@@ -25,7 +25,10 @@ const getAllTasks = () => new Promise((resolve, reject) => {
 
 const deleteTask = taskId => axios.delete(`${baseUrl}/tasks/${taskId}.json`);
 
+const addNewTask = taskObject => axios.post(`${baseUrl}/tasks.json`, JSON.stringify(taskObject));
+
 export default {
   getAllTasks,
   deleteTask,
+  addNewTask,
 };
