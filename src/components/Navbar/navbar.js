@@ -28,10 +28,10 @@ const displayNavbar = () => {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" id="navbar-btn-task">new task</a>
+          <a class="nav-link" id="navbar-new-task">new task</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="navbar-btn-logout">logout</a>
+          <a class="nav-link" id="navbar-logout">logout</a>
         </li>
       </ul>
     </div>
