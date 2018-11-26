@@ -23,4 +23,9 @@ const getAllTasks = () => new Promise((resolve, reject) => {
     });
 });
 
-export default { getAllTasks };
+const deleteTask = taskId => axios.delete(`${baseUrl}/tasks/${taskId}.json`);
+
+export default {
+  getAllTasks,
+  deleteTask,
+};
