@@ -36,24 +36,14 @@ const printCompletedTaskBuilder = (tasks) => {
           <label class="form-check-label is-completed-checkbox" for="complete-check">Completed</label>
         </div>
         <div class="card-body">
-          <button class="btn btn-secondary edit-btn" data-edit-id=${task.id}><i class="far fa-edit edit-btn" data-edit-id=${task.id}></i></button>
-          <button class="btn btn-danger delete-btn" data-delete-id=${task.id}><i class="fas fa-trash-alt delete-btn" data-delete-id=${task.id}></i></button>
+          <button class="btn btn-secondary edit-btn" data-edit-id=${task.id}><i class="far fa-edit"></i></button>
+          <button class="btn btn-danger delete-btn" data-delete-id=${task.id}><i class="fas fa-trash-alt"></i></button>
         </div>
       </div>`;
     }
   });
   $('#task-completed-container').html(taskString);
 };
-
-// const printTasks = (tasks) => {
-//   tasks.forEach((task) => {
-//     if (task.isCompleted === false) {
-//       activeTaskBuilder(task);
-//     } else if (task.isCompleted === true) {
-//       completedTaskBuilder(task);
-//     }
-//   });
-// };
 
 const getTasks = () => {
   taskData.getAllTasks()
@@ -67,13 +57,11 @@ const getTasks = () => {
 };
 
 const deleteTask = (e) => {
-  // const idToDelete = $(e.target).closest('[data-delete-id]');
-  // console.log(idToDelete);
-  const idToDelete = e.target.dataset.deleteId;
+  const deleteBtn = $(e.target).closest('.delete-btn');
+  const idToDelete = $(deleteBtn).data('delete-id');
   taskData.deleteTask(idToDelete)
     .then(() => {
       getTasks();
-      // console.log(getTasks);
     })
     .catch((error) => {
       console.error('error on deleteTask', error);

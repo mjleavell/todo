@@ -46,7 +46,8 @@ const addTask = () => {
 };
 
 const displayEditForm = (e) => {
-  const idToEdit = e.target.dataset.editId;
+  const editBtn = $(e.target).closest('.edit-btn');
+  const idToEdit = $(editBtn).data('edit-id');
   taskData.getSingleTask(idToEdit)
     .then((singleTask) => {
       let domString = '<h3>Edit Task</h3>';
