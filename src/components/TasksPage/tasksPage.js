@@ -70,7 +70,6 @@ const deleteTask = (e) => {
     });
 };
 
-
 const updateIsCompleted = (e) => {
   const taskId = e.target.id;
   const isCompleted = e.target.checked;
@@ -81,6 +80,27 @@ const updateIsCompleted = (e) => {
       console.error(error);
     });
 };
+
+// if you move task from completed to active, function below updates entire task.
+// const updateTaskWhenChecked = (e) => {
+//   const ans = e.target.parentNode.previousElementSibling.innerHTML;
+//   const taskId = e.target.id;
+//   console.log(ans);
+//   const taskObject = {
+//     id: taskId,
+//     task: $(e.target).parent().prev('.card-title').html(),
+//     timeStamp: currentTime.getCurrentTime(),
+//     isCompleted: e.target.checked,
+//   };
+//   taskData.updateTask(taskObject, taskId)
+//     .then(() => {
+//       getTasks();
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//     });
+// };
+
 
 const bindEvents = () => {
   $('body').on('click', '.delete-btn', deleteTask);
