@@ -4,14 +4,6 @@ import taskData from '../../helpers/Data/taskData';
 import './tasksPage.scss';
 // import currentTime from '../../helpers/currentTime';
 
-// const getTime = (task) => {
-//   if (task.timeStamp === null) {
-//     currentTime.getCurrentTime();
-//   } else if (task.timeStamp !== null) {
-//    $(')
-//   }
-// };
-
 const printActiveTaskBuilder = (tasks) => {
   let taskString = '';
   tasks.forEach((task) => {
@@ -44,7 +36,7 @@ const printCompletedTaskBuilder = (tasks) => {
       <div class="card border-dark">
         <h5 class="card-title">${task.task}</h5>
         <div class="card-body">
-          <input type="checkbox" class="form-check-input is-completed-checkbox" id="${task.id}" value="${task.isCompleted}">
+          <input type="checkbox" class="form-check-input is-completed-checkbox" id="${task.id}" value="${task.isCompleted}" checked>
           <label class="form-check-label is-completed-checkbox" for="complete-check">Completed</label>
         </div>
         <div class="card-footer card-footer-complete">
@@ -68,8 +60,7 @@ const getTasks = () => {
 };
 
 const deleteTask = (e) => {
-  const deleteBtn = $(e.target).closest('.delete-btn');
-  const idToDelete = $(deleteBtn).data('delete-id');
+  const idToDelete = $(e.target).closest('.delete-btn').data('delete-id');
   taskData.deleteTask(idToDelete)
     .then(() => {
       getTasks();
@@ -79,14 +70,13 @@ const deleteTask = (e) => {
     });
 };
 
+
 const updateIsCompleted = (e) => {
   const taskId = e.target.id;
-  // console.log(e.target.closet())
   const isCompleted = e.target.checked;
-  taskData.updatedIsCompleted(taskId, isCompleted)
-    .then(() => {
-      getTasks();
-    })
+  taskData.updatedIsCompleted(taskId, isCompleted).then(() => {
+    getTasks();
+  })
     .catch((error) => {
       console.error(error);
     });
