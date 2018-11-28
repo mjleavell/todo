@@ -9,6 +9,7 @@ import loginBtn from './components/Auth/auth';
 import getUserLoginStatus from './helpers/navbarHelpers';
 import tasksPage from './components/TasksPage/tasksPage';
 import displayForm from './components/AddEditTask/addEditTask';
+import currentTime from './helpers/currentTime';
 
 const initApp = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
@@ -17,6 +18,7 @@ const initApp = () => {
   loginBtn();
   tasksPage();
   $('body').on('click', '#navbar-new-task', displayForm);
+  currentTime.getCurrentTime();
 };
 
 initApp();

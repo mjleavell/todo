@@ -2,6 +2,15 @@
 import $ from 'jquery';
 import taskData from '../../helpers/Data/taskData';
 import './tasksPage.scss';
+// import currentTime from '../../helpers/currentTime';
+
+// const getTime = (task) => {
+//   if (task.timeStamp === null) {
+//     currentTime.getCurrentTime();
+//   } else if (task.timeStamp !== null) {
+//    $(')
+//   }
+// };
 
 const printActiveTaskBuilder = (tasks) => {
   let taskString = '';
@@ -11,10 +20,13 @@ const printActiveTaskBuilder = (tasks) => {
       <div class="card border-dark">
         <h5 class="card-title">${task.task}</h5>
         <div class="card-body">
-          <input type="checkbox" class="form-check-input is-completed-checkbox" id="${task.id}">
+          <input type="checkbox" class="form-check-input is-completed-checkbox" id="${task.id}" value="${task.isCompleted}">
           <label class="form-check-label is-completed-checkbox" for="complete-check">Completed</label>
         </div>
         <div class="card-body">
+          <p>${task.timeStamp}</p>
+        </div>
+        <div class="card-footer card-footer-active">
           <button class="btn btn-secondary edit-btn" data-edit-id=${task.id}><i class="far fa-edit edit-btn" data-edit-id=${task.id}></i></button>
           <button class="btn btn-danger delete-btn" data-delete-id=${task.id}><i class="fas fa-trash-alt delete-btn" data-delete-id=${task.id}></i></button>
         </div>
@@ -32,11 +44,10 @@ const printCompletedTaskBuilder = (tasks) => {
       <div class="card border-dark">
         <h5 class="card-title">${task.task}</h5>
         <div class="card-body">
-          <input type="checkbox" class="form-check-input is-completed-checkbox" id="${task.id}" checked>
+          <input type="checkbox" class="form-check-input is-completed-checkbox" id="${task.id}" value="${task.isCompleted}">
           <label class="form-check-label is-completed-checkbox" for="complete-check">Completed</label>
         </div>
-        <div class="card-body">
-          <button class="btn btn-secondary edit-btn" data-edit-id=${task.id}><i class="far fa-edit"></i></button>
+        <div class="card-footer card-footer-complete">
           <button class="btn btn-danger delete-btn" data-delete-id=${task.id}><i class="fas fa-trash-alt"></i></button>
         </div>
       </div>`;
@@ -70,6 +81,7 @@ const deleteTask = (e) => {
 
 const updateIsCompleted = (e) => {
   const taskId = e.target.id;
+  // console.log(e.target.closet())
   const isCompleted = e.target.checked;
   taskData.updatedIsCompleted(taskId, isCompleted)
     .then(() => {

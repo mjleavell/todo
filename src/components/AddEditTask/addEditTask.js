@@ -1,10 +1,11 @@
 import $ from 'jquery';
 import taskData from '../../helpers/Data/taskData';
 import initializeTasksPage from '../TasksPage/tasksPage';
+import currentTime from '../../helpers/currentTime';
 
 const formBuilder = (task) => {
   const formString = `
-  <div class="form-group form-inline mx-auto">
+  <div class="form-group form-inline">
     <label for="form-task-title">Task:</label>
     <input type="text" class="form-control w-25" value="${task.task}" id="form-task-title" placeholder="Enter new item">
   </div>`;
@@ -14,6 +15,7 @@ const formBuilder = (task) => {
 const getTaskFromForm = () => {
   const task = {
     task: $('#form-task-title').val(),
+    timeStamp: currentTime.getCurrentTime(),
     isCompleted: false,
   };
   return task;
@@ -22,6 +24,7 @@ const getTaskFromForm = () => {
 const displayForm = () => {
   const emptyTask = {
     task: '',
+    timeStamp: '',
     isCompleted: '',
   };
   let domString = '<h3>Add Task</h3>';
