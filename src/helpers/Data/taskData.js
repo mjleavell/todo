@@ -41,10 +41,13 @@ const deleteTask = taskId => axios.delete(`${baseUrl}/tasks/${taskId}.json`);
 
 const addNewTask = taskObject => axios.post(`${baseUrl}/tasks.json`, JSON.stringify(taskObject));
 
+const updatedIsCompleted = (taskId, isCompleted) => axios.patch(`${baseUrl}/tasks/${taskId}.json`, { isCompleted });
+
 export default {
   getAllTasks,
   getSingleTask,
   updateTask,
   deleteTask,
   addNewTask,
+  updatedIsCompleted,
 };
