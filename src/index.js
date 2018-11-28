@@ -1,6 +1,5 @@
 import firebase from 'firebase/app';
 import 'bootstrap';
-import $ from 'jquery';
 
 import apiKeys from '../db/apiKeys.json';
 import displayNavbar from './components/Navbar/navbar';
@@ -16,7 +15,7 @@ const initApp = () => {
   getUserLoginStatus();
   loginBtn();
   tasksPage();
-  $('body').on('click', '#navbar-new-task', displayForm);
+  displayForm();
 };
 
 initApp();
