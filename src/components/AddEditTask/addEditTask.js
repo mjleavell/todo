@@ -5,9 +5,13 @@ import currentTime from '../../helpers/currentTime';
 
 const formBuilder = (task) => {
   const formString = `
-  <div class="form-inline mx-auto">
-    <label for="form-task-title">Task:</label>
-    <input type="text" class="form-control form-input w-25" value="${task.task}" id="form-task-title" placeholder="Enter new item">
+  <div class="form-row d-flex justify-content-center mt-3">
+    <div class="form-group col-6 pr-1">
+      <input type="text" class="form-control form-input" value="${task.task}" id="form-new-input" placeholder="Enter new task">
+    </div>
+    <div class="form-group col-2 p-0">
+      <button class="btn btn-secondary" id="save-new-task">Add Task</button>
+    </div>
   </div>`;
   return formString;
 };
@@ -21,45 +25,48 @@ const getTaskFromForm = () => {
   return task;
 };
 
+const getTaskFromEdit = (e) => {
+  const task = {
+    task: $(e.target).closest('.form-input').val(),
+    timeStamp: currentTime.getCurrentTime(),
+    isCompleted: false,
+  };
+  return task;
+};
+
 const displayForm = () => {
   const emptyTask = {
     task: '',
     timeStamp: '',
     isCompleted: '',
   };
-  let domString = '<h3>Add Task</h3>';
+  let domString = '';
   domString += formBuilder(emptyTask);
-  domString += '<button class="btn btn-secondary" id="save-new-task">Save New Task</button>';
-  $('#form').html(domString).show();
-  $('#task').hide();
+  $('#form').html(domString);
 };
 
-const addTask = () => {
+const addTask = (e) => {
   const newTaskObj = getTaskFromForm();
   // console.log(newTaskObj);
-  taskData.addNewTask(newTaskObj)
-    .then(() => {
-      $('#form').html('').hide();
-      $('#task').show();
-      initializeTasksPage();
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-};
-
-const editTask = (e) => {
-  const editedTask = getTaskFromForm();
-  const taskId = e.target.dataset.singleEditId;
-  taskData.updateTask(editedTask, taskId)
-    .then(() => {
-      $('#form').html('');
-      $('#task').show();
-      initializeTasksPage();
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+  if (e.keyCode === 13) {
+    taskData.addNewTask(newTaskObj)
+      .then(() => {
+        $('#form-new-input').val('');
+        initializeTasksPage();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  } else if (e.type === 'click') {
+    taskData.addNewTask(newTaskObj)
+      .then(() => {
+        $('#form-new-input').val('');
+        initializeTasksPage();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 };
 
 const changeTaskTitleToInput = (e) => {
@@ -68,13 +75,13 @@ const changeTaskTitleToInput = (e) => {
   const taskTitleElement = $(taskTitle).get(0);
   const taskTitleText = $(taskTitleElement).html();
   const taskId = $(e.target).closest('.edit-btn').data('edit-id');
-  $(taskTitleElement).replaceWith(`<input type="text" value="${taskTitleText}" data-edit-input-id=${taskId} class="form-control form-input edit-input" id="form-task-title">`);
+  $(taskTitleElement).replaceWith(`<input type="text" value="${taskTitleText}" data-edit-input-id=${taskId} class="form-control form-input edit-input" id="edit-task-title">`);
 };
 
 const editInputEnterEvent = (e) => {
   if (e.keyCode === 13) {
     const editedTaskId = $(e.target).data('edit-input-id');
-    const editedTaskObject = getTaskFromForm();
+    const editedTaskObject = getTaskFromEdit(e);
     taskData.updateTask(editedTaskObject, editedTaskId)
       .then(() => {
         initializeTasksPage();
@@ -85,15 +92,10 @@ const editInputEnterEvent = (e) => {
   }
 };
 
-const cancelTaskEdit = () => {
-  $('#form').hide();
-  $('#task').show();
-};
-
-$('body').on('keyup', '.edit-input', editInputEnterEvent);
+$('body').on('keyup', '#edit-task-title', editInputEnterEvent);
+$('body').on('keyup', '#form-new-input', addTask);
 $('body').on('click', '#save-new-task', addTask);
 $('body').on('click', '.edit-btn', changeTaskTitleToInput);
-$('body').on('click', '#save-edit-btn', editTask);
-$('body').on('click', '#cancel-edit-btn', cancelTaskEdit);
+// $('body').on('click', '#save-edit-btn', editTask);
 
 export default displayForm;
