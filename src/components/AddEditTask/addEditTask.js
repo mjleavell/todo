@@ -7,10 +7,6 @@ const formBuilder = (task) => {
   <div class="form-group form-inline mx-auto">
     <label for="form-task-title">Task:</label>
     <input type="text" class="form-control w-25" value="${task.task}" id="form-task-title" placeholder="Enter new item">
-  </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="complete-check">
-    <label class="form-check-label" for="complete-check">Completed</label>
   </div>`;
   return formString;
 };
@@ -50,12 +46,13 @@ const addTask = () => {
 };
 
 const displayEditForm = (e) => {
-  const idToEdit = e.target.dataset.editId;
+  const editBtn = $(e.target).closest('.edit-btn');
+  const idToEdit = $(editBtn).data('edit-id');
   taskData.getSingleTask(idToEdit)
     .then((singleTask) => {
       let domString = '<h3>Edit Task</h3>';
       domString += formBuilder(singleTask);
-      domString += `<button class="btn btn-primary" id="edit-task" data-single-edit-id=${singleTask.id}>Save Task</button>`;
+      domString += `<button class="btn btn-primary" id="save-edit-task" data-single-edit-id=${singleTask.id}>Save Task</button>`;
       $('#form').html(domString).show();
       $('#task').hide();
     })
@@ -78,8 +75,8 @@ const editTask = (e) => {
     });
 };
 
-$('body').on('click', '#save-task', addTask);
+$('body').on('click', '#save-new-task', addTask);
 $('body').on('click', '.edit-btn', displayEditForm);
-$('body').on('click', '#edit-task', editTask);
+$('body').on('click', '#save-edit-task', editTask);
 
 export default displayForm;
