@@ -14,9 +14,24 @@
     padding-left: 5px;
     padding-right: 5px;
   }
+  .card-footer-active {
+    padding: 0;
+    background-color: white;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+  }
+  .card-footer-complete {
+    padding: 0;
+    background-color: white;
+    border: none;
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 
 .card-body {
   padding: 0px;
   display: inline-block;
 }
+
