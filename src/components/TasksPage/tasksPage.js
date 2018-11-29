@@ -16,7 +16,7 @@ const printActiveTaskBuilder = (tasks) => {
           <label class="form-check-label is-completed-checkbox" for="complete-check">Completed</label>
         </div>
         <div class="card-body">
-          <p>Active since: ${task.timeStamp}</p>
+          <p>Created: ${task.timeStamp}</p>
         </div>
         <div class="card-footer card-footer-active">
           <button class="btn btn-success edit-btn" data-edit-id=${task.id}><i class="far fa-edit edit-btn" data-edit-id=${task.id}></i></button>
