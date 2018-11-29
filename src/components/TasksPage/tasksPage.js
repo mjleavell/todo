@@ -9,17 +9,17 @@ const printActiveTaskBuilder = (tasks) => {
   tasks.forEach((task) => {
     if (task.isCompleted === false) {
       taskString += `
-      <div class="card border-dark">
+      <div class="card bg-dark text-white">
         <h5 class="card-title">${task.task}</h5>
         <div class="card-body">
           <input type="checkbox" class="form-check-input is-completed-checkbox" id="${task.id}" value="${task.isCompleted}">
           <label class="form-check-label is-completed-checkbox" for="complete-check">Completed</label>
         </div>
         <div class="card-body">
-          <p>${task.timeStamp}</p>
+          <p>Active since: ${task.timeStamp}</p>
         </div>
         <div class="card-footer card-footer-active">
-          <button class="btn btn-secondary edit-btn" data-edit-id=${task.id}><i class="far fa-edit edit-btn" data-edit-id=${task.id}></i></button>
+          <button class="btn btn-success edit-btn" data-edit-id=${task.id}><i class="far fa-edit edit-btn" data-edit-id=${task.id}></i></button>
           <button class="btn btn-danger delete-btn" data-delete-id=${task.id}><i class="fas fa-trash-alt delete-btn" data-delete-id=${task.id}></i></button>
         </div>
       </div>`;
@@ -33,7 +33,7 @@ const printCompletedTaskBuilder = (tasks) => {
   tasks.forEach((task) => {
     if (task.isCompleted === true) {
       taskString += `
-      <div class="card border-dark">
+      <div class="card bg-dark text-white">
         <h5 class="card-title">${task.task}</h5>
         <div class="card-body">
           <input type="checkbox" class="form-check-input is-completed-checkbox" id="${task.id}" value="${task.isCompleted}" checked>

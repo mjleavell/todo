@@ -48,17 +48,17 @@
     "task10": {
       "task": "Take a shower",
       "timeStamp": "11/26/2018, 10:03:00 PM",
-      "isCompleted": false
+      "isCompleted": true
     },
     "task11": {
       "task": "Get a manicure",
       "timeStamp": "11/26/2018, 05:15:00 PM",
-      "isCompleted": false
+      "isCompleted": true
     },
     "task12": {
       "task": "Respond to emails",
       "timeStamp": "11/27/2018, 08:57:00 AM",
-      "isCompleted": false
+      "isCompleted": true
     },
     "task13": {
       "task": "Walk the dog",
@@ -73,7 +73,7 @@
     "task15": {
       "task": "Schedule dentist appointment",
       "timeStamp": "11/26/2018, 11:23:00 AM",
-      "isCompleted": false
+      "isCompleted": true
     }
   }
 }
