@@ -37,3 +37,8 @@
   display: inline-block;
 }
 
+#task-completed-container {
+  .card-title {
+    text-decoration-line: line-through;
+  }
+}
