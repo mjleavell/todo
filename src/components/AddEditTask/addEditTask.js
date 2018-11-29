@@ -5,12 +5,12 @@ import currentTime from '../../helpers/currentTime';
 
 const formBuilder = (task) => {
   const formString = `
-  <div class="form-row d-flex justify-content-center mt-3">
+  <div class="form-row d-flex justify-content-center mt-3 mx-0 p-0">
     <div class="form-group col-6 pr-1">
       <input type="text" class="form-control form-input" value="${task.task}" id="form-new-input" placeholder="Enter new task">
     </div>
     <div class="form-group col-2 p-0">
-      <button class="btn btn-secondary" id="save-new-task">Add Task</button>
+      <button class="btn btn-dark" id="save-new-task">Add Task</button>
     </div>
   </div>`;
   return formString;
@@ -48,19 +48,29 @@ const displayForm = () => {
 const addTask = (e) => {
   const newTaskObj = getTaskFromForm();
   // console.log(newTaskObj);
-  if (e.keyCode === 13) {
+  if (e.keyCode === 13 && newTaskObj.task === '') {
+    $('#form-new-input').addClass('btn-outline-danger');
+    $('#form-new-input').attr('placeholder', 'Please enter a task');
+  } else if (e.keyCode === 13 && newTaskObj.task !== '') {
     taskData.addNewTask(newTaskObj)
       .then(() => {
         $('#form-new-input').val('');
+        $('#form-new-input').removeClass('btn-outline-danger');
+        $('#form-new-input').attr('placeholder', 'Enter new task');
         initializeTasksPage();
       })
       .catch((error) => {
         console.error(error);
       });
-  } else if (e.type === 'click') {
+  } else if (e.type === 'click' && newTaskObj.task === '') {
+    $('#form-new-input').addClass('btn-outline-danger');
+    $('#form-new-input').attr('placeholder', 'Please enter a task');
+  } else if (e.type === 'click' && newTaskObj.task !== '') {
     taskData.addNewTask(newTaskObj)
       .then(() => {
         $('#form-new-input').val('');
+        $('#form-new-input').removeClass('btn-outline-danger');
+        $('#form-new-input').attr('placeholder', 'Enter new task');
         initializeTasksPage();
       })
       .catch((error) => {
