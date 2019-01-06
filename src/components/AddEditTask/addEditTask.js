@@ -47,7 +47,7 @@ const displayForm = () => {
 
 const addTask = (e) => {
   const newTaskObj = getTaskFromForm();
-  // console.log(newTaskObj);
+  console.log(e);
   if (e.keyCode === 13 && newTaskObj.task === '') {
     $('#form-new-input').addClass('btn-outline-danger');
     $('#form-new-input').attr('placeholder', 'Please enter a task');
